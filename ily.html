@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I Love My Girlfirend</title>
+    <style>
+         body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-image: url(hayden.jpg); /* Replace 'background_image.jpg' with the path to your background image */
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        #myVideo {
+            width: 100vw
+            height: 100vh
+	    object-fit: cover;
+            
+        }
+
+        #loveMessage {
+            display: none;
+            text-align: center;
+            font-family: monospace;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+    <video id="myVideo" controls autoplay>
+        <source src="hayden.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div id="loveMessage" style="display:none; text-align:center; font-family: monospace;">
+        <pre>
+ 111111111111111111111111111
+1_________________________1
+1_________________________1
+1_______¶¶¶¶¶¶¶¶¶¶________1
+1_________¶¶¶¶¶¶__________1
+1_________¶¶¶¶¶¶__________1
+1_________¶¶¶¶¶¶__________1
+1_________¶¶¶¶¶¶__________1
+1_________¶¶¶¶¶¶__________1
+1_________¶¶¶¶¶¶__________1
+1_________¶¶¶¶¶¶__________1
+1_________¶¶¶¶¶¶__________1
+1_________¶¶¶¶¶¶__________1
+1_______¶¶¶¶¶¶¶¶¶¶________1
+1_________________________1
+1_________________________1
+1____¶¶¶¶¶_______¶¶¶¶¶____1
+1__¶¶¶¶¶¶¶¶¶___¶¶¶¶¶¶¶¶¶__1
+1_¶¶¶¶¶¶¶¶¶¶¶_¶¶¶¶¶¶¶¶¶¶¶_1
+1_¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶_1
+1__¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶__1
+1____¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶____1
+1______¶¶¶¶¶¶¶¶¶¶¶¶¶______1
+1________¶¶¶¶¶¶¶¶¶________1
+1_________¶¶¶¶¶¶¶_________1
+1__________¶¶¶¶¶__________1
+1___________¶¶¶___________1
+1____________¶____________1
+1_________________________1
+1_________________________1
+1_¶¶¶¶¶¶¶¶¶_____¶¶¶¶¶¶¶¶¶_1
+1___¶¶¶¶¶_________¶¶¶¶¶___1
+1___¶¶¶¶¶_________¶¶¶¶¶___1
+1___¶¶¶¶¶_________¶¶¶¶¶___1
+1___¶¶¶¶¶_________¶¶¶¶¶___1
+1___¶¶¶¶¶_________¶¶¶¶¶___1
+1___¶¶¶¶¶_________¶¶¶¶¶___1
+1___¶¶¶¶¶_________¶¶¶¶¶___1
+1___¶¶¶¶¶¶_______¶¶¶¶¶¶___1
+1____¶¶¶¶¶¶_____¶¶¶¶¶¶____1
+1______¶¶¶¶¶¶¶¶¶¶¶¶¶______1
+1________¶¶¶¶¶¶¶¶¶________1
+1_________________________1
+111111111111111111111111111
+
+        </pre>
+    </div>
+
+    <script>
+        var video = document.getElementById("myVideo");
+        var loveMessage = document.getElementById("loveMessage");
+
+        video.addEventListener("ended", function() {
+            // Hide the video
+            video.style.display = "none";
+
+            // Show the love message
+            loveMessage.style.display = "block";
+        });
+    </script>
+</body>
+</html>
