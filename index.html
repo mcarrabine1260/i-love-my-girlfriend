@@ -28,13 +28,16 @@
         }
 
         #loveMessage {
-            display: none;
-            text-align: center;
-            font-family: monospace;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+           display: none;
+    text-align: center;
+    font-family: monospace;
+    font-size: 24px; /* Adjust the font size as needed */
+    font-weight: bold; /* Make the font bold */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: pre;
         }
     </style>
 </head>
@@ -44,66 +47,47 @@
         Your browser does not support the video tag.
     </video>
 
-    <div id="loveMessage" style="display:none; text-align:center; font-family: monospace;">
-        <pre>
- 111111111111111111111111111
-1_________________________1
-1_________________________1
-1_______¶¶¶¶¶¶¶¶¶¶________1
-1_________¶¶¶¶¶¶__________1
-1_________¶¶¶¶¶¶__________1
-1_________¶¶¶¶¶¶__________1
-1_________¶¶¶¶¶¶__________1
-1_________¶¶¶¶¶¶__________1
-1_________¶¶¶¶¶¶__________1
-1_________¶¶¶¶¶¶__________1
-1_________¶¶¶¶¶¶__________1
-1_________¶¶¶¶¶¶__________1
-1_______¶¶¶¶¶¶¶¶¶¶________1
-1_________________________1
-1_________________________1
-1____¶¶¶¶¶_______¶¶¶¶¶____1
-1__¶¶¶¶¶¶¶¶¶___¶¶¶¶¶¶¶¶¶__1
-1_¶¶¶¶¶¶¶¶¶¶¶_¶¶¶¶¶¶¶¶¶¶¶_1
-1_¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶_1
-1__¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶__1
-1____¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶____1
-1______¶¶¶¶¶¶¶¶¶¶¶¶¶______1
-1________¶¶¶¶¶¶¶¶¶________1
-1_________¶¶¶¶¶¶¶_________1
-1__________¶¶¶¶¶__________1
-1___________¶¶¶___________1
-1____________¶____________1
-1_________________________1
-1_________________________1
-1_¶¶¶¶¶¶¶¶¶_____¶¶¶¶¶¶¶¶¶_1
-1___¶¶¶¶¶_________¶¶¶¶¶___1
-1___¶¶¶¶¶_________¶¶¶¶¶___1
-1___¶¶¶¶¶_________¶¶¶¶¶___1
-1___¶¶¶¶¶_________¶¶¶¶¶___1
-1___¶¶¶¶¶_________¶¶¶¶¶___1
-1___¶¶¶¶¶_________¶¶¶¶¶___1
-1___¶¶¶¶¶_________¶¶¶¶¶___1
-1___¶¶¶¶¶¶_______¶¶¶¶¶¶___1
-1____¶¶¶¶¶¶_____¶¶¶¶¶¶____1
-1______¶¶¶¶¶¶¶¶¶¶¶¶¶______1
-1________¶¶¶¶¶¶¶¶¶________1
-1_________________________1
-111111111111111111111111111
-
-        </pre>
-    </div>
+    <div id="loveMessage"></div>
 
     <script>
-        var video = document.getElementById("myVideo");
         var loveMessage = document.getElementById("loveMessage");
+         var messageText = `
+$$$$_________$$$$
+$$$$$$$$_____$$$$$$$$
+$$$$$$$$$$$$_$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$
+$$$$$$$
+$$$
+$
+        `;
 
+        function printMessage() {
+            var index = 0;
+            var interval = setInterval(function() {
+                loveMessage.textContent += messageText[index];
+                index++;
+                if (index === messageText.length) {
+                    clearInterval(interval);
+                }
+            }, 50); // Adjust the interval (in milliseconds) for the typing speed
+        }
+
+        // Show the love message after the video ends
+        var video = document.getElementById("myVideo");
         video.addEventListener("ended", function() {
             // Hide the video
             video.style.display = "none";
 
             // Show the love message
             loveMessage.style.display = "block";
+            
+            // Start printing the message
+            printMessage();
         });
     </script>
 </body>
