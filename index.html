@@ -14,16 +14,17 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            display: flex;
-            align-items: center;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Adjust minmax values as needed */
+            gap: 16px; /* Adjust the gap between videos as needed */
             justify-content: center;
-            overflow: hidden;
+            align-items: center;
         }
 
         .video-container {
             position: relative;
-            width: 100vw;
-            height: 100vh;
+            width: 100%;
+            height: 100%;
         }
 
         .video {
@@ -31,109 +32,36 @@
             height: 100%;
             object-fit: cover;
         }
-
-        .love-message {
-            display: none;
-            text-align: center;
-            font-family: monospace;
-            font-size: 24px;
-            font-weight: bold;
-            color: red;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            white-space: pre;
-        }
     </style>
 </head>
 <body>
-    <!-- Video 1 -->
-    <div class="video-container">
-        <video controls autoplay class="video">
-            <source src="hayden.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <div class="love-message love-message-1"></div>
-    </div>
-
-    <!-- Video 2 -->
-    <div class="video-container">
-        <video controls autoplay class="video">
-            <source src="sweeny1.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <div class="love-message love-message-2"></div>
-    </div>
-
-    <!-- Video 3 -->
-    <div class="video-container">
-        <video controls autoplay class="video">
-            <source src="sweeny2.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <div class="love-message love-message-3"></div>
-    </div>
-<!-- Video 4 -->
-    <div class="video-container">
-        <video controls autoplay class="video">
-            <source src="sweeny3.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <div class="love-message love-message-4"></div>
-    </div>
-<!-- Video 5 -->
-    <div class="video-container">
-        <video controls autoplay class="video">
-            <source src="sweeny4.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <div class="love-message love-message-5"></div>
-    </div>
-
-    <!-- Add more videos as needed -->
-
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            var videos = document.querySelectorAll(".video");
-            var loveMessages = document.querySelectorAll(".love-message");
+            // Number of videos
+            var numVideos = 12;
 
-            videos.forEach(function (video, index) {
-                video.addEventListener("ended", function () {
-                    // Hide the video
-                    video.style.display = "none";
+            // Container for videos
+            var videosContainer = document.body;
 
-                    // Show the love message
-                    loveMessages[index].style.display = "block";
+            // Loop to create video elements
+            for (var i = 1; i <= numVideos; i++) {
+                // Video container
+                var videoContainer = document.createElement("div");
+                videoContainer.className = "video-container";
 
-                    // Start printing the message
-                    printMessage(loveMessages[index]);
-                });
-            });
+                // Video element
+                var video = document.createElement("video");
+                video.controls = true;
+                video.autoplay = true;
+                video.className = "video";
+                video.innerHTML = 'Your browser does not support the video tag.';
+                video.setAttribute("src", "video" + i + ".mp4");
 
-            function printMessage(loveMessage) {
-                var messageText = `
-RRRR_________MMMM
-RRRRRRRR_____MMMMMMMM
-RRRRRRRRRRRR_MMMMMMMMMMMM
-RRRRRRRRRRRRR♡MMMMMMMMMMMMM
-RRRRRRRRRRRRR♡MMMMMMMMMMMMM
-RRRRRRRRRRRR♡MMMMMMMMMMMM
-RRRRRRRRRRR♡MMMMMMMMMMM
-RRRRRRRRR♡MMMMMMMMM
-RRRRRR♡MMMMMM
-RRR♡MMM
-R♡M
-♡
-                `;
-                var index = 0;
-                var interval = setInterval(function () {
-                    loveMessage.textContent += messageText[index];
-                    index++;
-                    if (index === messageText.length) {
-                        clearInterval(interval);
-                    }
-                }, 50); // Adjust the interval (in milliseconds) for the typing speed
+                // Append video to the container
+                videoContainer.appendChild(video);
+
+                // Append the video container to the body
+                videosContainer.appendChild(videoContainer);
             }
         });
     </script>
