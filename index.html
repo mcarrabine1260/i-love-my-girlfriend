@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>I Love My Girlfirend</title>
+    <title>I Love My Girlfriend</title>
     <style>
-         body {
+        body {
             margin: 0;
             padding: 0;
             height: 100vh;
-	    background-color: #808080;
-            background-image: url(hayden.jpg); /* Replace 'background_image.jpg' with the path to your background image */
+            background-color: #808080;
+            background-image: url(hayden.jpg);
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -20,39 +20,99 @@
             overflow: hidden;
         }
 
-        #myVideo {
-            width: 100vw
-            height: 100vh
-	    object-fit: cover;
-            
+        .video-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
         }
 
-        #loveMessage {
-           display: none;
-    text-align: center;
-    font-family: monospace;
-    font-size: 24px; /* Adjust the font size as needed */
-    font-weight: bold; /* Make the font bold */
-    color: red;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    white-space: pre;
+        .video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .love-message {
+            display: none;
+            text-align: center;
+            font-family: monospace;
+            font-size: 24px;
+            font-weight: bold;
+            color: red;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            white-space: pre;
         }
     </style>
 </head>
 <body>
-    <video id="myVideo" controls autoplay>
-        <source src="hayden.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
+    <!-- Video 1 -->
+    <div class="video-container">
+        <video controls autoplay class="video">
+            <source src="hayden.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="love-message love-message-1"></div>
+    </div>
 
-    <div id="loveMessage"></div>
+    <!-- Video 2 -->
+    <div class="video-container">
+        <video controls autoplay class="video">
+            <source src="sweeny1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="love-message love-message-2"></div>
+    </div>
+
+    <!-- Video 3 -->
+    <div class="video-container">
+        <video controls autoplay class="video">
+            <source src="sweeny2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="love-message love-message-3"></div>
+    </div>
+<!-- Video 4 -->
+    <div class="video-container">
+        <video controls autoplay class="video">
+            <source src="sweeny3.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="love-message love-message-4"></div>
+    </div>
+<!-- Video 5 -->
+    <div class="video-container">
+        <video controls autoplay class="video">
+            <source src="sweeny4.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="love-message love-message-5"></div>
+    </div>
+
+    <!-- Add more videos as needed -->
 
     <script>
-        var loveMessage = document.getElementById("loveMessage");
-         var messageText = `
+        document.addEventListener("DOMContentLoaded", function () {
+            var videos = document.querySelectorAll(".video");
+            var loveMessages = document.querySelectorAll(".love-message");
+
+            videos.forEach(function (video, index) {
+                video.addEventListener("ended", function () {
+                    // Hide the video
+                    video.style.display = "none";
+
+                    // Show the love message
+                    loveMessages[index].style.display = "block";
+
+                    // Start printing the message
+                    printMessage(loveMessages[index]);
+                });
+            });
+
+            function printMessage(loveMessage) {
+                var messageText = `
 RRRR_________MMMM
 RRRRRRRR_____MMMMMMMM
 RRRRRRRRRRRR_MMMMMMMMMMMM
@@ -65,30 +125,16 @@ RRRRRR♡MMMMMM
 RRR♡MMM
 R♡M
 ♡
-        `;
-
-        function printMessage() {
-            var index = 0;
-            var interval = setInterval(function() {
-                loveMessage.textContent += messageText[index];
-                index++;
-                if (index === messageText.length) {
-                    clearInterval(interval);
-                }
-            }, 50); // Adjust the interval (in milliseconds) for the typing speed
-        }
-
-        // Show the love message after the video ends
-        var video = document.getElementById("myVideo");
-        video.addEventListener("ended", function() {
-            // Hide the video
-            video.style.display = "none";
-
-            // Show the love message
-            loveMessage.style.display = "block";
-            
-            // Start printing the message
-            printMessage();
+                `;
+                var index = 0;
+                var interval = setInterval(function () {
+                    loveMessage.textContent += messageText[index];
+                    index++;
+                    if (index === messageText.length) {
+                        clearInterval(interval);
+                    }
+                }, 50); // Adjust the interval (in milliseconds) for the typing speed
+            }
         });
     </script>
 </body>
